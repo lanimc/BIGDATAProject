@@ -1,0 +1,36 @@
+Data Sources
+
+Citibike: https://s3.amazonaws.com/tripdata/index.html
+ 201307-201402-citibike-tripdata.zip : https://s3.amazonaws.com/tripdata/201307-201402-citibike-tripdata.zip
+ 201307-citibike-tripdata.zip	Jul 28th 2015, 05:39:06 pm	27.07 MB	ZIP file : https://s3.amazonaws.com/tripdata/201307-citibike-tripdata.zip
+ 201308-citibike-tripdata.zip	Jul 28th 2015, 05:39:27 pm	32.09 MB	ZIP file : https://s3.amazonaws.com/tripdata/201308-citibike-tripdata.zip
+ 201309-citibike-tripdata.zip	Jul 28th 2015, 05:39:51 pm	33.16 MB	ZIP file : https://s3.amazonaws.com/tripdata/201309-citibike-tripdata.zip
+ 201310-citibike-tripdata.zip	Jul 28th 2015, 05:40:16 pm	33.07 MB	ZIP file : https://s3.amazonaws.com/tripdata/201310-citibike-tripdata.zip
+ 201311-citibike-tripdata.zip	Jul 28th 2015, 05:40:41 pm	21.62 MB	ZIP file : https://s3.amazonaws.com/tripdata/201311-citibike-tripdata.zip
+ 201312-citibike-tripdata.zip	Jul 28th 2015, 05:40:58 pm	14.31 MB	ZIP file : https://s3.amazonaws.com/tripdata/201312-citibike-tripdata.zip
+ 201401-citibike-tripdata.zip	Jul 28th 2015, 05:41:09 pm	9.70 MB	  ZIP file : https://s3.amazonaws.com/tripdata/201401-citibike-tripdata.zip
+ 201402-citibike-tripdata.zip	Jul 28th 2015, 05:41:17 pm	7.25 MB	  ZIP file : https://s3.amazonaws.com/tripdata/201402-citibike-tripdata.zip
+ 201403-citibike-tripdata.zip	Jul 28th 2015, 05:41:23 pm	14.13 MB	ZIP file : https://s3.amazonaws.com/tripdata/201403-citibike-tripdata.zip
+ 201404-citibike-tripdata.zip	Jul 28th 2015, 05:41:34 pm	21.41 MB	ZIP file : https://s3.amazonaws.com/tripdata/201404-citibike-tripdata.zip
+ 201405-citibike-tripdata.zip	Jul 28th 2015, 05:42:34 pm	27.59 MB	ZIP file : https://s3.amazonaws.com/tripdata/201405-citibike-tripdata.zip
+ 201406-citibike-tripdata.zip	Jul 28th 2015, 05:42:57 pm	29.90 MB	ZIP file : https://s3.amazonaws.com/tripdata/201406-citibike-tripdata.zip
+ 201407-citibike-tripdata.zip	Jul 28th 2015, 05:43:19 pm	30.89 MB	ZIP file : https://s3.amazonaws.com/tripdata/201407-citibike-tripdata.zip
+ 201408-citibike-tripdata.zip	Jul 28th 2015, 05:43:45 pm	30.63 MB	ZIP file : https://s3.amazonaws.com/tripdata/201408-citibike-tripdata.zip
+ 201409-citibike-tripdata.zip	Jul 28th 2015, 05:44:09 pm	30.25 MB	ZIP file : https://s3.amazonaws.com/tripdata/201409-citibike-tripdata.zip
+ 201410-citibike-tripdata.zip	Jul 28th 2015, 05:44:32 pm	26.15 MB	ZIP file : https://s3.amazonaws.com/tripdata/201410-citibike-tripdata.zip
+ 201411-citibike-tripdata.zip	Jul 28th 2015, 05:44:52 pm	16.83 MB	ZIP file : https://s3.amazonaws.com/tripdata/201411-citibike-tripdata.zip
+ 201412-citibike-tripdata.zip	Jul 28th 2015, 05:45:05 pm	12.72 MB	ZIP file : https://s3.amazonaws.com/tripdata/201412-citibike-tripdata.zip
+ 201501-citibike-tripdata.zip	Jul 28th 2015, 05:45:16 pm	7.01 MB	  ZIP file : https://s3.amazonaws.com/tripdata/201501-citibike-tripdata.zip
+ 201502-citibike-tripdata.zip	Jul 28th 2015, 05:45:22 pm	4.82 MB	  ZIP file : https://s3.amazonaws.com/tripdata/201502-citibike-tripdata.zip
+ 201503-citibike-tripdata.zip	Jul 28th 2015, 05:45:27 pm	8.42 MB	  ZIP file : https://s3.amazonaws.com/tripdata/201503-citibike-tripdata.zip
+ 201504-citibike-tripdata.zip	Jul 28th 2015, 05:45:35 pm	20.74 MB	ZIP file : https://s3.amazonaws.com/tripdata/201504-citibike-tripdata.zip
+ 201505-citibike-tripdata.zip	Jul 28th 2015, 05:45:51 pm	30.34 MB	ZIP file : https://s3.amazonaws.com/tripdata/201505-citibike-tripdata.zip
+ 201506-citibike-tripdata.zip	Jul 28th 2015, 05:46:15 pm	22.89 MB	ZIP file : https://s3.amazonaws.com/tripdata/201506-citibike-tripdata.zip
+ 201507-citibike-tripdata.zip	Sep 24th 2015, 12:55:14 pm	34.52 MB	ZIP file : https://s3.amazonaws.com/tripdata/201507-citibike-tripdata.zip
+ 201508-citibike-tripdata.zip	Sep 24th 2015, 12:55:49 pm	38.04 MB	ZIP file : https://s3.amazonaws.com/tripdata/201508-citibike-tripdata.zip
+ 201509-citibike-tripdata.zip	Dec 2nd 2015, 04:22:38 pm	43.62 MB	  ZIP file : https://s3.amazonaws.com/tripdata/201509-citibike-tripdata.zip
+ 201510-citibike-tripdata.zip	Dec 2nd 2015, 04:22:49 pm	41.82 MB	  ZIP file : https://s3.amazonaws.com/tripdata/201510-citibike-tripdata.zip
+ 201511-citibike-tripdata.zip	Dec 2nd 2015, 04:19:52 pm	34.35 MB	  ZIP file : https://s3.amazonaws.com/tripdata/201511-citibike-tripdata.zip
+ 201512-citibike-tripdata.zip	Jan 21st 2016, 05:41:56 pm	23.15 MB	ZIP file : https://s3.amazonaws.com/tripdata/201512-citibike-tripdata.zip
+
+ index.html	Jan 28th 2016, 08:04:38 pm	6 KB	HTML file
