@@ -4,16 +4,16 @@ from pyspark import SparkContext
 import datetime
 import pytz 
 
-sc = SparkContext(appName="JoinBikeAndTaxi")
+sc = SparkContext(appName="DataMunging")
 
 ######################################################################
 # Bike
 
 #reading bike data
+file_bike = sc.textFile("s3://irm238finalproject/input/yellow*")
 
 #removing header and splitting " "
-file_bike = file_bike.zipWithIndex().filter(lambda (row, index): index > 0).map(lambda (row,index): row.split())
-
+file_bike = file_bike.zipWithIndex().filter(lambda (row, index): index > 0).map(lambda (row,index): row.split(","))
 
 
 #indexing bike by date and selecting tripduration, start/end latitude and longitude 
@@ -33,7 +33,7 @@ def createYearMonthDayHourKey_bike(line):
 file_bike_tindexed = file_bike.map(createYearMonthDayHourKey_bike)
 
 # removing and cleaning duplicate hours
-biketrips = file_bike_indexed.reduceByKey(lambda a,b:a, 1)
+biketrips = file_bike_tindexed.reduceByKey(lambda a,b:a, 1)
 
 
 
