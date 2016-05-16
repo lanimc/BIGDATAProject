@@ -15,15 +15,15 @@ sc = SparkContext(appName="DataMunging")
 #reading in bike data
 bikedir = sc.textFile("s3://irm238finalproject/input/*tripdata.csv")
 
-bikedir.count() #9937981
+#bikedir.count() #9937981
 
 #split row into fields using comma delimiter, add index to each field
 bikedir = bikedir.zipWithIndex().filter(lambda (row, index): index > 0).map(lambda (row,index): row.split(","))
 
-bikedir.count() #9937980
+#bikedir.count() #9937980
 
 
-#create date time key based on start time and pair with tripduration, start/end latitude and longitude . 
+#create date time key based on start time and pair with start/end latitude and longitude . 
 #Use pytz to solve any daylight savings issues
 #map start time to duration and location
 
@@ -31,7 +31,7 @@ bikedir.count() #9937980
 def timekey_bike(line):
     utc=pytz.utc
     eastern=pytz.timezone('US/Eastern')
-    date = datetime.datetime.strptime(line[1], "%Y/%m/%d/ %H%:M")
+    date = datetime.datetime.strptime(line[1], "%Y/%m/%d/ %H%:%M")
     utcdate = utc.localize(date, is_dst=None)
     date_eastern = utcdate.astimezone(eastern)
     key = (date_eastern.year, date_eastern.month, date_eastern.day, date_eastern.hour)
@@ -44,10 +44,11 @@ biketrips = bikedir_tindexed.reduceByKey(lambda a,b:a, 1)
 
 #reading taxi data
 taxidir = sc.textFile("s3://irm238finalproject/input/yellow*")
+#137589022
 
-taxidir = taxdir.filter(lambda line: line[0:10]).map(lambda row: row.split(","))
+taxidir = taxidir.filter(lambda line: line[0:10]).map(lambda row: row.split(","))
 
-# indexing taxi by date and selecting end trip time, start/end latitude and longitude
+# indexing taxi by date and selecting start/end latitude and longitude
 def timekey_taxi(line):
     utc=pytz.utc
     eastern=pytz.timezone('US/Eastern')
