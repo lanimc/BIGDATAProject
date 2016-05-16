@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from StringIO import StringIO
 from pyspark import SparkContext
 
-
+if __name__ == "__main__":
 sc = SparkContext(appName="DataMunging")
 
 
@@ -38,7 +38,7 @@ def timekey_bike(line):
     value = (line[6], line[7], line[10], line[11])
     return(key, value)
 
-bikedir_tindexed = bikedir.map(timekey_bike)
+#bikedir_tindexed = bikedir.map(timekey_bike)
 
 biketrips = bikedir_tindexed.reduceByKey(lambda a,b:a, 1)
 
@@ -46,7 +46,7 @@ biketrips = bikedir_tindexed.reduceByKey(lambda a,b:a, 1)
 taxidir = sc.textFile("s3://irm238finalproject/input/yellow*")
 #137589022
 
-taxidir = taxidir.filter(lambda line: line[0:10]).map(lambda row: row.split(","))
+taxidir = taxidir.filter(lambda line: line[1:10]).map(lambda row: row.split(","))
 
 # indexing taxi by date and selecting start/end latitude and longitude
 def timekey_taxi(line):
@@ -68,12 +68,12 @@ taxitrips = taxidir_tindexed.reduceByKey(lambda a,b:a, 1)
 # Joining datasets on temporal index
  
 
-joined_data = taxitrips.join(biketrips)
+joined_data = taxitrips.union(biketrips)
 
 # adding neighborhoods
 
 
 
 
-joined_data.saveAsTextFile('output.txt')
+joined_data.saveAsTextFile('s3://irm238finalproject/output/joinedoutput.csv')
 
