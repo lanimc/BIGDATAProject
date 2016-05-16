@@ -1,8 +1,13 @@
-#Source:https://github.com/jorgehpo/
 
-from pyspark import SparkContext
+
+
 import datetime
-import pytz 
+import pytz
+import csv
+import matplotlib.pyplot as plt
+from StringIO import StringIO
+from pyspark import SparkContext
+
 
 sc = SparkContext(appName="DataMunging")
 
@@ -10,42 +15,52 @@ sc = SparkContext(appName="DataMunging")
 #reading in bike data
 bikedir = sc.textFile("s3://irm238finalproject/input/*tripdata.csv")
 
+bikedir.count() #9937981
+
+#split row into fields using comma delimiter, add index to each field
 bikedir = bikedir.zipWithIndex().filter(lambda (row, index): index > 0).map(lambda (row,index): row.split(","))
 
+bikedir.count() #9937980
 
-#indexing bike by date and selecting tripduration, start/end latitude and longitude 
-def createYearMonthDayHourKey_bike(line):
+
+#create date time key based on start time and pair with tripduration, start/end latitude and longitude . 
+#Use pytz to solve any daylight savings issues
+#map start time to duration and location
+
+
+def timekey_bike(line):
     utc=pytz.utc
     eastern=pytz.timezone('US/Eastern')
-    date = datetime.datetime.strptime(line[1], "%Y%m%d%H%M")
-    if date.minute > 30:
-        date = date + datetime.timedelta(minutes=30)
-    date_gmt = utc.localize(date, is_dst=None)
-    date_eastern = date_gmt.astimezone(eastern)
+    date = datetime.datetime.strptime(line[1], "%Y/%m/%d/ %H%:M")
+    utcdate = utc.localize(date, is_dst=None)
+    date_eastern = utcdate.astimezone(eastern)
     key = (date_eastern.year, date_eastern.month, date_eastern.day, date_eastern.hour)
-    value = (line[1], line[6], line[7], line[10], line[11])
+    value = (line[6], line[7], line[10], line[11])
     return(key, value)
 
-bikedir_tindexed = bikedir.map(createYearMonthDayHourKey_bike)
+bikedir_tindexed = bikedir.map(timekey_bike)
 
 biketrips = bikedir_tindexed.reduceByKey(lambda a,b:a, 1)
-biketrips.persist()
 
 #reading taxi data
 taxidir = sc.textFile("s3://jpo286-ds1004-sp16/Project/datasets/yellow*")
 
-taxidir = taxdir.filter(lambda line: line[0:8]!="VendorID").map(lambda row: row.split(","))
+taxidir = taxdir.filter(lambda line: line[0:10]).map(lambda row: row.split(","))
 
 # indexing taxi by date and selecting end trip time, start/end latitude and longitude
-def createYearMonthDayHourKey_taxi(line):
+def timekey_taxi(line):
+    utc=pytz.utc
+    eastern=pytz.timezone('US/Eastern')
     date = datetime.datetime.strptime(line[1], "%Y-%m-%d %H:%M:%S")
-    key = (date.year, date.month, date.day, date.hour)
-    value = (line[2], line[5], line[6], line[9],line[10])
+    utcdate = utc.localize(date, is_dst=None)
+    date_eastern = utcdate.astimezone(eastern)
+    key = (date_eastern.year, date_eastern.month, date_eastern.day, date_eastern.hour)
+    value = (line[5], line[6], line[9],line[10])
     return(key, value)
 
 
-taxitrips = file_taxi.map(createYearMonthDayHourKey_taxi)
-taxitrips.persist()
+taxidir_tindexed = taxidir.map(timekey_taxi)
+taxitrips = taxidir_tindexed.reduceByKey(lambda a,b:a, 1)
 
 
 
@@ -57,4 +72,7 @@ joined_data = taxitrips.join(biketrips)
 # adding neighborhoods
 
 
-joined_data.saveAsTextFile('s3://irm238finalproject/output/')
+
+
+joined_data.saveAsTextFile('output.txt')
+
