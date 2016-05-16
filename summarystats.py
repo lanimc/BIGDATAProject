@@ -14,9 +14,9 @@ if __name__ == "__main__":
     sc = SparkContext(appName="SummaryStatisticsExample")  # SparkContext
 
   
-    bike = sc.textFile("s3://irm238FinalProject/input/*-citibike-tripdata.csv")  # an RDD of Vectors
+    bike = sc.textFile("s3://irm238finalproject/input/*-citibike-tripdata.csv")  # an RDD of Vectors
 
-	taxi = sc.textFile("s3://irm238FinalProject/input/*-citibike-tripdata.csv") 
+	taxi = sc.textFile("s3://irm238finalproject/input/*-citibike-tripdata.csv") 
    
     # Compute column summary statistics.
     summary = Statistics.colStats(bike)
