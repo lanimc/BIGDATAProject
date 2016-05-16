@@ -25,9 +25,13 @@ Does the number and destination of taxi trips predict the number of citibike tri
 DOCUMENTS
 --------------------------
 Project Report and Progress Log: https://docs.google.com/a/nyu.edu/document/d/1qw7-NyXSNQVSBq2X0uLG60X0CEyBI1oGmP-muqOxMLk/edit?usp=sharing
+
 Github Repo: https://github.com/lanimc/BIGDATAProject.git
+
 S3 Bucket: https://s3.amazonaws.com/s3/home?region=us-west-2#&bucket=irm238finalproject&prefix=
+
 Poster: 
+
 Code Method Sources: 
   Apache Spark github examples available at https://github.com/apache/spark/tree/master/examples/src/main/python/mllib
   Karau, Konwinski, Wendell & Zaharia, Learning Spark: Lightning-FAST Big Data Analysis O'REILLY Books 2015
@@ -76,5 +80,5 @@ DATA
   Release............. 2014.8 
   Date of Data..... August 2014
 
-- FCC Census Block Conversions API to map lat and long to census tract.  https://www.fcc.gov/general/census-block-conversions-api
+
 
