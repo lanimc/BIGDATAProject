@@ -43,7 +43,7 @@ bikedir_tindexed = bikedir.map(timekey_bike)
 biketrips = bikedir_tindexed.reduceByKey(lambda a,b:a, 1)
 
 #reading taxi data
-taxidir = sc.textFile("s3://jpo286-ds1004-sp16/Project/datasets/yellow*")
+taxidir = sc.textFile("s3://irm238finalproject/input/yellow*")
 
 taxidir = taxdir.filter(lambda line: line[0:10]).map(lambda row: row.split(","))
 
